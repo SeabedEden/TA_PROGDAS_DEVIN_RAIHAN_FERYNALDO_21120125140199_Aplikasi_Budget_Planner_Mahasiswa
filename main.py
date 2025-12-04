@@ -115,18 +115,18 @@ class BudgetPlannerApp:
         total_expense = sum([t.getNominal() for t in self.transaksi_list if t.getJenis() == "Pengeluaran"])
         saldo = total_income - total_expense
         
-        pemasukan_label = tk.Label(summary_frame, text=f"Pemasukan: Rp {total_income:,.0f}", 
-                                   font=("Arial", 14), bg="white", fg="green")
-        pemasukan_label.grid(row=0, column=0, padx=25, pady=20)
-        
-        pengeluaran_label = tk.Label(summary_frame, text=f"Pengeluaran: Rp {total_expense:,.0f}", 
-                                     font=("Arial", 14), bg="white", fg="red")
-        pengeluaran_label.grid(row=0, column=1, padx=25, pady=20)
-        
         saldo_color = "blue" if saldo >= 0 else "red"
         saldo_label = tk.Label(summary_frame, text=f"Saldo: Rp {saldo:,.0f}", 
                                font=("Arial", 16, "bold"), bg="white", fg=saldo_color)
-        saldo_label.grid(row=0, column=2, padx=25, pady=20)
+        saldo_label.grid(row=0, column=0, padx=25, pady=20)
+        
+        pemasukan_label = tk.Label(summary_frame, text=f"Pemasukan: Rp {total_income:,.0f}", 
+                                   font=("Arial", 14), bg="white", fg="green")
+        pemasukan_label.grid(row=0, column=1, padx=25, pady=20)
+        
+        pengeluaran_label = tk.Label(summary_frame, text=f"Pengeluaran: Rp {total_expense:,.0f}", 
+                                     font=("Arial", 14), bg="white", fg="red")
+        pengeluaran_label.grid(row=0, column=2, padx=25, pady=20)
         
         # Riwayat Frame
         riwayat_frame = tk.LabelFrame(self.content_frame, text="Transaksi Terbaru", 
